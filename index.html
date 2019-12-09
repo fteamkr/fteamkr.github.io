@@ -55,13 +55,18 @@
                 <a class="nav-link" href="#">Features</a>
                 <a class="nav-link" href="support@fteam.kr">Contact</a>
               </nav>-->
+              <h4 class="cover-heading">Yet another dev team</h4>
             </div>
           </div>
 
           <div class="inner cover">
-            <h3 class="cover-heading">Yet another dev team</h3>
             
-            <p class="lead">사용 기술 / Technologies</p>
+            
+            <p class="lead">1. 중/소규모 소프트웨어 및 시스템 개발 및 자문 / Development and consulting for small & mid-sized systems and softwares.</p>
+
+            <p class="lead">2. 정보시스템 성능 개선 및 문제 해결 / IT systems performance improvement and troubleshooting.</p>
+
+            <p class="lead">사용 기술 및 서비스 / Technologies and services</p>
             <div id="technologies"></div>
 
             <p></p>
@@ -173,6 +178,8 @@ let data_technologies = [
   { url: 'https://www.elastic.co/kr/products/elastic-stack', title: 'Elastic Stack (Elasticsearch, Logstash, Beats, Kibana)' },
   { url: 'https://prometheus.io/', title: 'Prometheus' },
   { url: 'https://grafana.com/', title: 'Grafana' },
+  { url: 'http://zeppelin.apache.org/', title: 'Apache Zeppelin' },
+  
 ]
 
 // https://developers.google.com/web/tools/lighthouse/audits/noopener
@@ -182,7 +189,7 @@ let template_subtechs = _.template('<a href="<%= url %>" class="btn btn-outline-
 $(document).ready(function() {
   let $t = $('#technologies')
 
-  _.forEach(data_technologies, function(tech) {
+  _.forEach(data_technologies, function(tech) {    
     if('subtechs' in tech) {
       _.forEach(tech.subtechs, function(subtech) {
         $t.append(template_subtechs(subtech))
