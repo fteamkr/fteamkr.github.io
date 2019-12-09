@@ -29,6 +29,12 @@
 
     <!-- Bootstrap CSS --><link href="./assets/css/bootstrap.min.css" rel="stylesheet">
     <!-- Bootstrap Example Cover CSS --><link href="./assets/css/example-cover.css" rel="stylesheet">
+
+    <style>
+#technologies .btn {
+  margin: .25rem;
+}
+    </style>
   </head>
 
   <body>
@@ -39,7 +45,7 @@
 
         <div class="cover-container">
 
-          <div class="masthead clearfix">
+          <div class="clearfix">
             <div class="inner">
               <h3 class="masthead-brand">
                 <img src="./assets/img/Fteam_logo_w.png" width="200" height="66" alt="F Team Logo" />
@@ -53,17 +59,18 @@
           </div>
 
           <div class="inner cover">
-            <h1 class="cover-heading">Yet another dev team</h1>
-            <p class="lead"></p>
-            <p class="lead">
-              <a href="#" class="btn btn-lg btn-secondary">Coming soon!</a>
-            </p>
+            <h3 class="cover-heading">Yet another dev team</h3>
+            
+            <p class="lead">사용 기술 / Technologies</p>
+            <div id="technologies"></div>
+
+            <p></p>
+            <a href="mailto:contact@fteam.kr?subject=문의합니다!" class="btn btn-secondary btn-lg btn-block">메일로 문의하기 (Contact via E-mail)</a>
           </div>
 
-          <div class="mastfoot">
+          <div class="clearfix">
             <div class="inner small">
-              <p>(Original Template) <a href="https://getbootstrap.com/docs/4.4/examples/cover/">Cover</a> for <a href="http://getbootstrap.com">Bootstrap</a>, by <a href="https://twitter.com/mdo">@mdo</a>.</p>
-              <p>(Logo Font) <a href="https://www.google.co.kr/get/noto/help/cjk/">Noto Sans CJK KR</a></p>
+              <p>(Logo Font) <a href="https://www.google.co.kr/get/noto/help/cjk/">Noto Sans CJK KR</a> / (Original Template) <a href="https://getbootstrap.com/docs/4.4/examples/cover/">Cover</a> for <a href="http://getbootstrap.com">Bootstrap</a>, by <a href="https://twitter.com/mdo">@mdo</a>.</p>
             </div>
           </div>
 
@@ -75,5 +82,116 @@
 
     <!-- jQuery JS --><script src="./assets/js/jquery-3.4.1.min.js"></script>
     <!-- Bootstrap JS --><script src="./assets/js/bootstrap.bundle.min.js"></script>
+    <!-- lodash JS --><script src="./assets/js/lodash.min.js"></script>
+    <script>
+let data_technologies = [
+  { 
+    url: 'https://openjdk.java.net/',
+    title: 'Java',
+    subtechs: [
+      { url: 'https://spring.io/projects/spring-framework', title: 'Spring Framework' },
+      { url: 'https://www.egovframe.go.kr/', title: '전자정부프레임워크(eGovFrame)' },
+      { url: 'https://spring.io/projects/spring-boot', title: 'Spring Boot' },
+      { url: 'https://projectlombok.org/', title: 'Lombok' },
+      { url: 'https://maven.apache.org/', title: 'Apache Maven' },
+    ]
+  },
+  {
+    url: 'https://www.python.org/',
+    title: 'Python',
+    subtechs: [
+      { url: 'http://flask.pocoo.org/', title: 'Flask' },
+      { url: 'https://jinja.palletsprojects.com/', title: 'Jinja' },
+      { url: 'https://gbeced.github.io/pyalgotrade/', title: 'PyAlgoTrade' },
+      { url: 'https://www.crummy.com/software/BeautifulSoup/', title: 'Beautiful Soup' }
+    ]
+  },
+  {
+    title: 'Javascript',
+    subtechs: [
+      { url: 'https://nodejs.org/', title: 'Node.js' },
+      { url: 'https://jquery.com/', title: 'jQuery' },
+      { url: 'https://lodash.com/', title: 'Lodash' },
+      { url: 'https://vuejs.org/', title: 'Vue.js' },
+      { url: 'https://nuxtjs.org/', title: 'Nuxt.js' },
+      { url: 'https://electronjs.org/', title: 'Electron' },
+      { url: 'https://d3js.org/', title: 'D3.js' },
+      { url: 'https://www.jspsych.org/', title: 'jsPsych.js' },
+      { url: 'https://phantomjs.org/', title: 'PhantomJS' },
+      { url: 'https://pptr.dev/', title: 'Puppeteer' },
+      
+    ]
+  },
+  { url: 'https://developer.android.com/', title: 'Android/Java' },
+  { url: 'https://developer.apple.com/swift/', title: 'iOS/Swift' },
+  { url: 'https://www.tizen.org/', title: 'Tizen/C' },
+  { url: 'https://docs.microsoft.com/dotnet/visual-basic/', title: 'Visual BASIC' },
+  { url: 'https://www.php.net/', title: 'PHP' },
+  {
+    title: 'Servers',
+    subtechs: [
+      { url: 'https://nginx.org/', title: 'nginx' },
+      { url: 'https://httpd.apache.org/', title: 'Apache HTTP Server' },
+      { url: 'https://tomcat.apache.org/', title: 'Apache Tomcat' },
+    ]
+  },
+  {
+    title: 'Databases',
+    subtechs: [
+      { url: 'https://www.microsoft.com/sql-server/', title: 'SQL Server' },
+      { url: 'https://dev.mysql.com/', title: 'MySQL' },
+      { url: 'https://mariadb.com/', title: 'MariaDB' },
+      { url: 'https://www.oracle.com/database/', title: 'Oracle' },
+      { url: 'https://redis.io/', title: 'Redis' },
+      { url: 'https://realm.io/', title: 'Realm' },
+      { url: 'https://www.mongodb.com/', title: 'MongoDB' },
+      { url: 'https://pouchdb.com/', title: 'Pouch DB' },
+    ]
+  },
+  {
+    title: 'Cloud Services',
+    subtechs: [
+      { url: 'https://aws.amazon.com/', title: 'Amazon Web Services (AWS)' },
+      { url: 'https://azure.microsoft.com/', title: 'Microsoft Azure' },
+      { url: 'https://cloud.google.com/', title: 'Google Cloud Platform (GCP)' },
+      { url: 'https://ncloud.com/', title: 'Naver Cloud Platform' },
+      { url: 'https://www.ibm.com/cloud', title: 'IBM Cloud' },
+    ]
+  },
+  { url: 'https://sentry.io/', title: 'Sentry' },
+  { url: 'https://analytics.google.com/', title: 'Google Analytics' },
+  { url: 'https://firebase.google.com/', title: 'Firebase (FCM, Analytics)' },
+  { url: 'https://github.com/', title: 'GitHub' },
+  { url: 'https://gitlab.com/', title: 'GitLab' },
+  { url: 'https://www.atlassian.com/software/bitbucket', title: 'BitBucket' },
+  { url: 'https://www.atlassian.com/software/jira', title: 'Jira' },
+  { url: 'https://www.atlassian.com/software/confluence', title: 'Confluence' },
+  { url: 'https://www.docker.com/', title: 'Docker' },
+  { url: 'https://www.vagrantup.com/', title: 'Vagrant' },
+  { url: 'https://git-scm.com/', title: 'Git' },
+  { url: 'https://subversion.apache.org/', title: 'Apache Subversion (SVN)' },
+  { url: 'https://www.elastic.co/kr/products/elastic-stack', title: 'Elastic Stack (Elasticsearch, Logstash, Beats, Kibana)' },
+  { url: 'https://prometheus.io/', title: 'Prometheus' },
+  { url: 'https://grafana.com/', title: 'Grafana' },
+]
+
+// https://developers.google.com/web/tools/lighthouse/audits/noopener
+let template_techs = _.template('<a href="<%= url %>" class="btn btn-outline-secondary" target="_blank" rel="noopener"><%= title %></a>')
+let template_subtechs = _.template('<a href="<%= url %>" class="btn btn-outline-secondary" target="_blank" rel="noopener"><%= title %></a>')
+
+$(document).ready(function() {
+  let $t = $('#technologies')
+
+  _.forEach(data_technologies, function(tech) {
+    if('subtechs' in tech) {
+      _.forEach(tech.subtechs, function(subtech) {
+        $t.append(template_subtechs(subtech))
+      })
+    } else {
+      $t.append(template_techs(tech))
+    }
+  })
+})
+    </script>
   </body>
 </html>
