@@ -102,6 +102,8 @@ let data_technologies = [
       { url: 'https://spring.io/projects/spring-boot', title: 'Spring Boot' },
       { url: 'https://projectlombok.org/', title: 'Lombok' },
       { url: 'https://maven.apache.org/', title: 'Apache Maven' },
+      { url: 'https://www.oracle.com/technetwork/java/index-jsp-138231.html', title: 'JSP' },
+      { url: 'https://www.thymeleaf.org/', title: 'Thymeleaf' },
     ]
   },
   {
@@ -115,7 +117,8 @@ let data_technologies = [
     ]
   },
   {
-    title: 'Javascript',
+    url: 'https://developer.mozilla.org/docs/Web/JavaScript',
+    title: 'JavaScript (ECMAScript)',
     subtechs: [
       { url: 'https://nodejs.org/', title: 'Node.js' },
       { url: 'https://jquery.com/', title: 'jQuery' },
@@ -127,6 +130,8 @@ let data_technologies = [
       { url: 'https://www.jspsych.org/', title: 'jsPsych.js' },
       { url: 'https://phantomjs.org/', title: 'PhantomJS' },
       { url: 'https://pptr.dev/', title: 'Puppeteer' },
+      { url: 'https://webpack.js.org/', title: 'webpack' },
+      
       
     ]
   },
@@ -136,7 +141,17 @@ let data_technologies = [
   { url: 'https://docs.microsoft.com/dotnet/visual-basic/', title: 'Visual BASIC' },
   { url: 'https://www.php.net/', title: 'PHP' },
   {
-    title: 'Servers',
+    title: 'Web',
+    subtechs: [
+      { url: 'https://www.w3.org/html/', title: 'HTML' },
+      { url: 'https://www.w3.org/Style/CSS/', title: 'CSS' },
+      { url: 'https://getbootstrap.com/', title: 'Bootstrap' },
+      { url: 'https://www.w3.org/XML/', title: 'XML' },
+      { url: 'https://www.json.org/', title: 'JSON' },
+    ]
+  },
+  {
+    title: 'Servers (Web, WAS, Proxy)',
     subtechs: [
       { url: 'https://nginx.org/', title: 'nginx' },
       { url: 'https://httpd.apache.org/', title: 'Apache HTTP Server' },
@@ -166,39 +181,56 @@ let data_technologies = [
       { url: 'https://www.ibm.com/cloud', title: 'IBM Cloud' },
     ]
   },
-  { url: 'https://sentry.io/', title: 'Sentry' },
-  { url: 'https://analytics.google.com/', title: 'Google Analytics' },
-  { url: 'https://firebase.google.com/', title: 'Firebase (FCM, Analytics)' },
-  { url: 'https://github.com/', title: 'GitHub' },
-  { url: 'https://gitlab.com/', title: 'GitLab' },
-  { url: 'https://www.atlassian.com/software/bitbucket', title: 'BitBucket' },
-  { url: 'https://www.atlassian.com/software/jira', title: 'Jira' },
-  { url: 'https://www.atlassian.com/software/confluence', title: 'Confluence' },
-  { url: 'https://www.docker.com/', title: 'Docker' },
-  { url: 'https://www.vagrantup.com/', title: 'Vagrant' },
-  { url: 'https://git-scm.com/', title: 'Git' },
-  { url: 'https://subversion.apache.org/', title: 'Apache Subversion (SVN)' },
-  { url: 'https://www.elastic.co/kr/products/elastic-stack', title: 'Elastic Stack (Elasticsearch, Logstash, Beats, Kibana)' },
-  { url: 'https://prometheus.io/', title: 'Prometheus' },
-  { url: 'https://grafana.com/', title: 'Grafana' },
-  { url: 'http://zeppelin.apache.org/', title: 'Apache Zeppelin' },
-  
+  {
+    title: 'Analytics',
+    subtechs: [
+      { url: 'https://analytics.google.com/', title: 'Google Analytics' },
+      { url: 'https://firebase.google.com/', title: 'Firebase (FCM, Analytics)' },
+      { url: 'https://sentry.io/', title: 'Sentry' },
+      { url: 'https://www.elastic.co/kr/products/elastic-stack', title: 'Elastic Stack (Elasticsearch, Logstash, Beats, Kibana)' },
+      { url: 'https://prometheus.io/', title: 'Prometheus' },
+      { url: 'https://grafana.com/', title: 'Grafana' },
+      { url: 'http://zeppelin.apache.org/', title: 'Apache Zeppelin' },
+    ]
+  },
+  {
+    title: 'Etc',
+    subtechs: [
+      { url: 'https://github.com/', title: 'GitHub' },
+      { url: 'https://gitlab.com/', title: 'GitLab' },
+      { url: 'https://www.atlassian.com/software/bitbucket', title: 'BitBucket' },
+      { url: 'https://www.atlassian.com/software/jira', title: 'Jira' },
+      { url: 'https://www.atlassian.com/software/confluence', title: 'Confluence' },
+      { url: 'https://www.docker.com/', title: 'Docker' },
+      { url: 'https://www.vagrantup.com/', title: 'Vagrant' },
+      { url: 'https://git-scm.com/', title: 'Git' },
+      { url: 'https://subversion.apache.org/', title: 'Apache Subversion (SVN)' },
+      { url: 'https://swagger.io/', title: 'Swagger (OpenAPI)' },
+      { url: 'https://business.kakao.com/info/bizmessage/', title: '카카오톡 비즈메시지 (알림톡)' },
+    ]
+  }
 ]
 
 // https://developers.google.com/web/tools/lighthouse/audits/noopener
-let template_techs = _.template('<a href="<%= url %>" class="btn btn-outline-secondary" target="_blank" rel="noopener"><%= title %></a>')
+let template_techs = _.template('<a href="<%= url %>" class="btn btn-outline-secondary" target="_blank" rel="noopener"><b><%= title %></b></a>')
+let template_techs_nourl = _.template('<a href="#" class="btn btn-outline-secondary"><b><%= title %></b></a>')
 let template_subtechs = _.template('<a href="<%= url %>" class="btn btn-outline-secondary" target="_blank" rel="noopener"><%= title %></a>')
 
 $(document).ready(function() {
   let $t = $('#technologies')
 
   _.forEach(data_technologies, function(tech) {    
+    if('url' in tech) {
+      $t.append(template_techs(tech))
+    } else {
+      $t.append(template_techs_nourl(tech))
+    }
+
     if('subtechs' in tech) {
       _.forEach(tech.subtechs, function(subtech) {
         $t.append(template_subtechs(subtech))
       })
-    } else {
-      $t.append(template_techs(tech))
+      // $t.append('<br>')
     }
   })
 })
