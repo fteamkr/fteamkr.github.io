@@ -63,13 +63,18 @@
             
             <hr>
 
+            <h3>제공 서비스 / Services</h3>
+
             <p class="lead">1. 중/소규모 소프트웨어 및 시스템 개발, 자문 / Development and consulting for small & mid-sized systems and softwares.</p>
 
             <p class="lead">2. 정보시스템 성능 개선 및 문제 해결 / IT systems performance improvement and troubleshooting.</p>
 
             <hr>
 
-            <p class="lead">사용 기술 및 서비스 / Technologies and services</p>
+            <h4>사용 기술 및 서비스 / Using technologies and services</h4>
+            <div class="form-group">
+              <input type="search" class="form-control" placeholder="기술, 서비스 검색" id="techsSearch" />
+            </div>
             <div id="technologies"></div>
 
             <p></p>
@@ -91,6 +96,7 @@
     <!-- jQuery JS --><script src="./assets/js/jquery-3.4.1.min.js"></script>
     <!-- Bootstrap JS --><script src="./assets/js/bootstrap.bundle.min.js"></script>
     <!-- lodash JS --><script src="./assets/js/lodash.min.js"></script>
+    <!-- Jets.js --><script src="./assets/js/jets.min.js"></script>
     <script>
 let data_technologies = [
   { 
@@ -216,6 +222,8 @@ let template_techs = _.template('<a href="<%= url %>" class="btn btn-outline-sec
 let template_techs_nourl = _.template('<a href="#" class="btn btn-outline-secondary"><b><%= title %></b></a>')
 let template_subtechs = _.template('<a href="<%= url %>" class="btn btn-outline-secondary" target="_blank" rel="noopener"><%= title %></a>')
 
+let jets_techs
+
 $(document).ready(function() {
   let $t = $('#technologies')
 
@@ -232,6 +240,11 @@ $(document).ready(function() {
       })
       // $t.append('<br>')
     }
+  })
+
+  var jets_techs = new Jets({
+    searchTag: '#techsSearch',
+    contentTag: '#technologies'
   })
 })
     </script>
