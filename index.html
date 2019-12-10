@@ -31,9 +31,9 @@
     <!-- Bootstrap Example Cover CSS --><link href="./assets/css/example-cover.css" rel="stylesheet">
 
     <style>
-#technologies .btn {
-  margin: .25rem;
-}
+.card { margin: 1rem; }
+#technologies .btn { margin: .25rem; }
+.splitter { margin-top: 2rem; margin-bottom: 2rem; }
     </style>
   </head>
 
@@ -61,27 +61,44 @@
 
           <div class="inner cover">
             
-            <hr>
+            <hr class="splitter">
 
-            <h3>제공 서비스 / Services</h3>
+            <h3 class="text-left">제공 서비스 <small>/ Services</small></h3>
 
-            <p class="lead">1. 중/소규모 소프트웨어 및 시스템 개발, 자문 / Development and consulting for small & mid-sized systems and softwares.</p>
+            <div class="card bg-secondary">
+              <div class="card-body text-left">
+                <h5 class="card-title">1. 중/소규모 소프트웨어 및 시스템 개발, 자문</h5>
+                <p class="card-text">Development and consulting for small & mid-sized systems and softwares.</p>
+              </div>
+            </div>
 
-            <p class="lead">2. 정보시스템 성능 개선 및 문제 해결 / IT systems performance improvement and troubleshooting.</p>
+            <div class="card bg-secondary">
+              <div class="card-body text-left">
+                <h5 class="card-title">2. 정보시스템 성능 개선 및 문제 해결</h5>
+                <p class="card-text">IT systems performance improvement and troubleshooting.</p>
+              </div>
+            </div>
 
-            <hr>
+            <hr class="splitter">
 
-            <h4>사용 기술 및 서비스 / Using technologies and services</h4>
+            <h3 class="text-left">사용 기술 및 서비스 <small>/ Using technologies and services</small></h3>
             <div class="form-group">
-              <input type="search" class="form-control" placeholder="기술, 서비스 검색" id="techsSearch" />
+              <input type="search" class="form-control form-control-lg" placeholder="기술, 서비스 검색" id="techsSearch" />
             </div>
             <div id="technologies"></div>
 
-            <p></p>
-            <a href="mailto:contact@fteam.kr?subject=문의합니다!" class="btn btn-secondary btn-lg btn-block">메일로 문의하기<br> (Contact via E-mail)</a>
+            <hr class="splitter">
+
+            <div id="contacts"></div>
+
+            <hr class="splitter">
+            
           </div>
 
           <div class="clearfix">
+            <div class="inner">
+              에프팀 (F Team) &copy; 2019<br>
+            </div>
             <div class="inner small">
               <p>(Logo Font) <a href="https://www.google.co.kr/get/noto/help/cjk/">Noto Sans CJK KR</a> / (Original Template) <a href="https://getbootstrap.com/docs/4.4/examples/cover/">Cover</a> for <a href="http://getbootstrap.com">Bootstrap</a>, by <a href="https://twitter.com/mdo">@mdo</a>.</p>
             </div>
@@ -218,9 +235,11 @@ let data_technologies = [
 ]
 
 // https://developers.google.com/web/tools/lighthouse/audits/noopener
-let template_techs = _.template('<a href="<%= url %>" class="btn btn-outline-secondary" target="_blank" rel="noopener"><b><%= title %></b></a>')
-let template_techs_nourl = _.template('<a href="#" class="btn btn-outline-secondary"><b><%= title %></b></a>')
-let template_subtechs = _.template('<a href="<%= url %>" class="btn btn-outline-secondary" target="_blank" rel="noopener"><%= title %></a>')
+let template_techs = _.template('<a href="<%= url %>" class="btn btn-outline-light" target="_blank" rel="noopener"><b><%= title %></b></a>')
+let template_techs_nourl = _.template('<a href="#" class="btn btn-outline-light"><b><%= title %></b></a>')
+let template_subtechs = _.template('<a href="<%= url %>" class="btn btn-outline-light" target="_blank" rel="noopener"><%= title %></a>')
+
+let template_contacts = _.template('<a href="<%=url %>" class="btn btn-secondary btn-lg btn-block">메일로 문의하기<br> (Contact via e-mail)</a>')
 
 let jets_techs
 
@@ -246,6 +265,8 @@ $(document).ready(function() {
     searchTag: '#techsSearch',
     contentTag: '#technologies'
   })
+
+  $('#contacts').append(template_contacts({ url: 'mailto:contact@fteam.kr?subject=문의합니다!' }))
 })
     </script>
   </body>
